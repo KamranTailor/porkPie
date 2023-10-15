@@ -1,0 +1,23 @@
+<header>
+        <nav>
+            <a href='/home'>
+                <div class="logo">
+                    🌐 Kamran Tailor
+                </div> 
+            </a>
+            <ul id='big'>
+                <li><a href="/home/#about">About</a></li>
+                <li><a href="/home/#news">News</a></li>
+                <li><a href="/home/#services">Services</a></li>
+                <li><a href="/home/#contact">Contact</a></li>
+                <li><a href="/login">::</a></li>
+            </ul>
+            <ul id='small'>
+                <li><a href="/home/#about">About</a></li>
+                <li><a href="/home/#news">News</a></li>
+                <li><a href="/home/#services">Services</a></li>
+                <li><a href="/home/#contact">Contact</a></li>
+                <li><a href="/login">::</a></li>
+            </ul>
+        </nav>
+</header>
