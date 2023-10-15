@@ -21,6 +21,6 @@ app.use('/userVerfication', login);
 const sc = require('./apiRequests/secureCheck.js');
 app.use('/secureCheck', sc);
 
-let port = 3000;
+let port = 80;
 app.use(express.static("public"));
 app.listen(port, () => console.log(`Listening at port ${port}`));
