@@ -1,0 +1,262 @@
+/* styles.css */
+
+/* Reset some default styles */
+body,
+h1,
+h2,
+h3,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    width: 100%;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #111;
+    color: #fff;
+}
+
+header {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 0;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.logo {
+    font-size: 24px;
+}
+
+#big {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+#small {
+    display: none;
+}
+
+li {
+    margin-right: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+}
+
+main {
+    flex: 1;
+    padding: 20px; /* Adjust as needed */
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer-logo {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.footer-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.copyright {
+    margin-top: 20px;
+    font-size: 0.9em;
+}
+
+#showM, #closeM {
+    display: none;
+    font-size: 25px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    main {
+        padding: 10px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+    }
+
+    .footer-links li {
+        margin-bottom: 5px;
+    }
+
+    #showM {
+        display: none;
+    }
+}
+@media screen and (max-width: 768px) {
+    nav {
+        padding: 0 10px; /* Reduce padding for smaller screens */
+    }
+
+    ul {
+        flex-direction: column; /* Stack navigation items vertically on mobile */
+    }
+
+    #small {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        margin-right: 0; /* Remove right margin for mobile */
+        margin-bottom: 10px; /* Add bottom margin for spacing */
+    }
+
+    #big {
+        display: none;
+    }
+
+    footer {
+        padding: 10px 0; /* Reduce padding for smaller screens */
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+
+    .footer-links li {
+        margin-right: 0; /* Remove right margin for mobile */
+    }
+
+    #menu-toggle {
+        display: block;
+    }
+
+    #small {
+        position: fixed;
+        top: 45px;
+        right: 10px;
+        padding: 15px;
+        border-radius: 20px;
+        width: fit-content;
+        height: fit-content;
+        background-color: #222;
+        transition: right 0.3s ease-in-out;
+    }
+
+    #small {
+        display: none;
+    }
+
+    #showM {
+        display: block;
+    }
+}
+
+
+/* Style for the container that holds the button */
+.action-container {
+    position: fixed;
+    bottom: 20px; /* Adjust the distance from the bottom as needed */
+    right: 20px; /* Adjust the distance from the right as needed */
+}
+
+/* Style for the button */
+.action {
+    background-color: #0074d9; /* Change to your desired background color */
+    color: #fff; /* Change to your desired text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #222;
+    font-weight: bold;
+}
+
+/* Style for table rows */
+tr {
+    background-color: #333;
+}
+
+/* Style for table hover effect */
+tr:hover {
+    background-color: #555;
+}
+
+/* Style for a striped table */
+table.striped {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table.striped th, table.striped td {
+    padding: 8px;
+    text-align: left;
+}
+
+table.striped th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+/* Style for striped table rows */
+table.striped tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* Style for striped table hover effect */
+table.striped tr:hover {
+    background-color: #ddd;
+}

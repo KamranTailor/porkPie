@@ -1,0 +1,47 @@
+#countdown-timer {
+    background-color: #0074d9; /* Change to your desired background color */
+    color: #fff; /* Change to your desired text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 17px;
+    cursor: not-allowed;
+    position: fixed;
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
+    right: 20px; /* Adjust the distance from the right as needed */
+}
+
+#items-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+}
+
+#item {
+    display: flex;
+    flex-direction: column; /* Set the flex direction to column */
+    align-items: center; /* Center content horizontally */
+    height: 200px; /* Increase the height to accommodate both image and text */
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+/* Style the image */
+img {
+    width: 150px;
+    height: 150px;
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+
+/* Style the text */
+#imageText {
+    margin-top: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #fff;
+}

@@ -42,11 +42,14 @@ async function insertHeader() {
     if (localStorage.getItem('userLoggedIn')) {
         if (localStorage.getItem('userLoggedIn') === 'true') { // Use strict comparison
             r = 'My Dashboard';
+            b = 'dashboard';
         } else {
             r = 'Login';
+            b = 'login';
         }
     } else {
         r = 'Login';
+        b = 'login';
     }
 
     const data = `<header>
@@ -61,17 +64,19 @@ async function insertHeader() {
             <li><a href="/home/#news">News</a></li>
             <li><a href="/home/#services">Services</a></li>
             <li><a href="/home/#contact">Contact</a></li>
-            <li><a href="/login">${r}</a></li>
+            <li><a href="/${b}">${r}</a></li>
         </ul>
-        <ul id='small'>
+        <span id="showM" onclick="smallShow()">☰</span>
+        <span id="closeM" onclick="smallClose()">X</span>
+    </nav>
+    </header>
+    <ul id='small'>
             <li><a href="/home/#about">About</a></li>
             <li><a href="/home/#news">News</a></li>
             <li><a href="/home/#services">Services</a></li>
             <li><a href="/home/#contact">Contact</a></li>
-            <li><a href="/login">${r}</a></li>
-        </ul>
-    </nav>
-    </header>`
+            <li><a href="/${b}">${r}</a></li>
+        </ul>`
 
     var header = document.createElement("div");
     header.innerHTML = data;
@@ -91,6 +96,26 @@ async function insertFooter() {
 
     // Insert the new element at the beginning of the body
     body.appendChild(footer);
+}
+
+function smallShow() {
+    var small = document.getElementById('small');
+    var menu_open = document.getElementById('showM');
+    var menu_close = document.getElementById('closeM');
+
+    small.style.display = 'flex'; 
+    menu_open.style.display = 'none'; 
+    menu_close.style.display = 'block'; 
+};
+
+function smallClose() {
+    var small = document.getElementById('small');
+    var menu_open = document.getElementById('showM');
+    var menu_close = document.getElementById('closeM');
+
+    small.style.display = 'none'; 
+    menu_close.style.display = 'none'; 
+    menu_open.style.display = 'block'; 
 }
 
 document.addEventListener('DOMContentLoaded', onPageLoad);

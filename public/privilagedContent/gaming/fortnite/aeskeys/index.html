@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Fortnite - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+
+    <style>
+        #item {
+            width: 80%;
+            padding: 20px;
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            background-color: #222;
+        }
+
+        #dynamicKeys {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <center><h1>Fortnite AES Keys</h1></center>
+        <br>
+        <h2>Info</h2>
+        <br>
+        <p><strong>Build: </strong><span id="build"></span></p>
+        <p><strong>Main Key: </strong><span id="mKey"></span></p>
+        <p><strong>Last Updated: </strong><span id="lUpdated"></span></p>
+        <br>
+        <br>
+        <h2>Dynamic Keys</h2>
+        <div id="dynamicKeys"></div>
+    </main>
+    <script src="/global.js"></script>
+    <script src="script.js"></script>
+    <script src="/loginCheck.js"></script>
+</body>

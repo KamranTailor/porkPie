@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Tube Time - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <style>
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            max-width: 1200px;
+        }
+
+        .item {
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        /* Individual background colors for each item */
+        #TrainTimes { background-color: #3498db; }
+        #TrainStatus { background-color: #2ecc71; }
+        #BusTimes { background-color: #e74c3c; }
+        #JourneyPanner { background-color: #f39c12; }
+        #SantanderCycles { background-color: #9b59b6; }
+        #RoadDisruptions { background-color: #1abc9c; }
+    </style>
+</head>
+<body>
+    <main>
+        <center><h1>TFL Data Services</h1></center>
+        <div class="dashboard">
+            <div id='TrainTimes' class='item' onclick="navigateTo('Train_Times')">Train Times</div>
+            <div id='TrainStatus' class='item' onclick="navigateTo('Train_Status')">Train Status</div>
+            <div id='BusTimes' class='item' onclick="navigateTo('Bus_Times')">Bus Times</div>
+            <div id='JourneyPanner' class='item' onclick="navigateTo('Journey_Planner')">Journey Planner</div>
+            <div id='SantanderCycles' class='item' onclick="navigateTo('Santander_Cycles')">Santander Cycles</div>
+            <div id='RoadDisruptions' class='item' onclick="navigateTo('Road_Disruptions')">Road Disruptions</div>
+        </div>
+    </main>
+    <script>
+        function navigateTo(server) {
+            window.location.href = `./${server.toLowerCase()}`;
+        }
+    </script>
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+</body>

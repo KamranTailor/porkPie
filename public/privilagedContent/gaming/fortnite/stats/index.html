@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Dashboard - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <center>
+        <h1>Fortnite Stats</h1>
+        <p>Enter your username to begin</p> </center>
+        <br>
+        <!-- Create an input field for the search bar -->
+        <center><input type="text" id='name' class="search-bar" placeholder="Enter Username"> <br>
+
+        <div class="toggle-container">
+            <!-- Create radio buttons for the options -->
+            <label class="toggle-option">
+                <input type="radio" name="platform" value="epic" checked> Epic
+            </label>
+    
+            <label class="toggle-option">
+                <input type="radio" name="platform" value="xbl"> Xbox
+            </label>
+    
+            <label class="toggle-option">
+                <input type="radio" name="platform" value="psn"> PSN
+            </label>
+        </div>
+        <br>
+        <div id="error"></div>
+        <!-- Create a submit button for the search -->
+        <button onclick='start()' type="submit" value="Search" class="search-button">Search</button>
+    <br>
+    <br>
+    <span id="data">
+    <h1><center><div id="user"></div></center></h1>
+    <div id="levl"></div>
+    <div class="stats">
+        <div class="stat">
+            <h2>Wins</h2>
+            <p id="oWinds">Replace with actual data</p>
+        </div>
+
+        <div class="stat">
+            <h2>Kills</h2>
+            <p id="oKilles">Replace with actual data</p>
+        </div>
+
+        <div class="stat">
+            <h2>Matches Played</h2>
+            <p id="oMP">Replace with actual data</p>
+        </div>
+    </div>
+    <br>
+    <h2 >Gamemodes</h2>
+    <div class="stats">
+        <div class="stat">
+            <h2>Solo</h2>
+            <p id="solo">Replace with actual data</p>
+        </div>
+        <div class="stat">
+            <h2>Duo</h2>
+            <p id="duo">Replace with actual data</p>
+        </div>
+        <div class="stat">
+            <h2>Squad</h2>
+            <p id="squad">Replace with actual data</p>
+        </div>
+    </div>
+    </div>
+    </span> 
+    </center>
+    </main>
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+    <script src="./script.js"></script>
+</body>

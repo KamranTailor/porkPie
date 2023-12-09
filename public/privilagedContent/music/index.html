@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Music - Kamran Tailor</title>
+    <script> const pageName = 'Music'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <style>
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            max-width: 1200px;
+        }
+
+        .item {
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .item:hover {
+            background-color: #2980b9;
+        }
+
+        #taylor {
+            background-color: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <center><h1>Music</h1></center>
+        <div class="dashboard">
+            <div class="item" id="taylor"><a href='./taylorSwift'>Taylor Swift</a></div>
+        </div>
+    </main>
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+</body>

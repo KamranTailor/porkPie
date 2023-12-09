@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Admin - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <div id="actions">
+            <button onclick="newUser()">Create User</button>
+            <button onclick="viewUsers()">View Users</button>
+        </div>
+        <br>
+
+        <form id="userDataForm">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="firstName" required><br>
+        
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="lastName" required><br>
+        
+            <label for="dob">Date of Birth:</label>
+            <input type="date" id="dob" name="dob" required><br>
+        
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br>
+        
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
+        
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br>
+        
+            <h3>Permissions:</h3>
+            <label for="userPermissions">User Permissions:</label>
+            <input type="checkbox" id="userPermissions" name="userPermissions" checked><br>
+        
+            <label for="editClientPins">Edit Client Pins:</label>
+            <input type="checkbox" id="editClientPins" name="editClientPins" checked><br>
+        
+            <label for="updateDependencies">Update Dependencies:</label>
+            <input type="checkbox" id="updateDependencies" name="updateDependencies" checked><br>
+        
+            <label for="addNewsStorys">Add News Stories:</label>
+            <input type="checkbox" id="addNewsStorys" name="addNewsStorys" checked><br>
+        
+            <label for="editUpdates">Edit Updates:</label>
+            <input type="checkbox" id="editUpdates" name="editUpdates" checked><br>
+        
+            <button id="sbButton" type="button" onclick="saveUserData()">Save Data</button>
+        </form>
+    </main>
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+    <script src="script.js"></script>
+
+    <script>
+        var addUser = document.getElementById('userDataForm');
+        function newUser(){
+            addUser.style.display = 'block'; 
+        }
+    </script>
+</body>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Fortnite - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <style>
+        .item {
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            max-width: 1200px;
+        }
+
+        /* Individual background colors for each item */
+        #AESKeys { background-color: #3498db; }
+        #Banners { background-color: #2ecc71; }
+        #Cosmetics { background-color: #e74c3c; }
+        #UpcomingCosmetics { background-color: #f39c12; }
+        #CreatorCodes { background-color: #9b59b6; }
+        #News { background-color: #1abc9c; }
+        #Playlists { background-color: #34495e; }
+        #ItemShop { background-color: #e67e22; }
+        #Stats { background-color: #3498db; }
+    </style>
+</head>
+<body>
+    <main>
+        <center><h1>Chouse a Service</h1></center>
+        <div class="dashboard">
+            <div id='AESKeys' class='item' onclick="navigateTo('AESKeys')">AES Keys</div>
+            <div id='Cosmetics' class='item' onclick="navigateTo('Cosmetics')">Cosmetics</div>
+            <div id='UpcomingCosmetics' class='item' onclick="navigateTo('UpcomingCosmetics')">Upcoming Cosmetics</div>
+            <div id='CreatorCodes' class='item' onclick="navigateTo('CreatorCodes')">Creator Codes</div>
+            <div id='News' class='item' onclick="navigateTo('News')">News</div>
+            <div id='Playlists' class='item' onclick="navigateTo('Playlists')">Playlists</div>
+            <div id='ItemShop' class='item' onclick="navigateTo('ItemShop')">Item Shop</div>
+            <div id='Stats' class='item' onclick="navigateTo('Stats')">Stats</div>
+        </div>
+    </main>
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+
+    <script>
+        function navigateTo(server) {
+            window.location.href = `./${server.toLowerCase()}`;
+        }
+    </script>
+</body>

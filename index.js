@@ -12,14 +12,27 @@ app.use(express.json());
 const pageinit = require('./apiRequests/pageinit.js');
 app.use('/pageinit', pageinit);
 
-
 //Login Requests
 const login = require('./apiRequests/userVerfication.js');
 app.use('/userVerfication', login);
 
+//User Settings
+const user = require('./apiRequests/user.js');
+app.use('/user', user);
+
 //Login Requests
 const sc = require('./apiRequests/secureCheck.js');
 app.use('/secureCheck', sc);
+
+//TFL Routes 
+const tflStopPoint = require('./apiRequests/tfl/stopPoint.js');
+app.use('/tflStopPoint', tflStopPoint);
+
+//FN Routes
+const fnStats = require('./apiRequests/fortnite/stats.js');
+app.use('/fn-stats', fnStats);
+const fnGet = require('./apiRequests/fortnite/fn_get.js');
+app.use('/fn-get', fnGet);
 
 let port = 80;
 app.use(express.static("public"));

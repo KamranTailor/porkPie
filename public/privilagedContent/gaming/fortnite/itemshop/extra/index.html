@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Fortnite - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <main>
+        <h1>Item Shop</h1>
+
+        <h2>Item Details - <span id='name'></span></h2>
+        <a id="back" href="../">⮐</a>
+        <br><br>
+        <table>
+            <tr>
+                <td><strong>Name:</strong></td>
+                <td><span id='name1'></span></td>
+            </tr>
+            <tr>
+                <td><strong>Description:</strong></td>
+                <td><span id='des'></span></td>
+            </tr>
+            <tr>
+                <td><strong>Type:</strong></td>
+                <td><span id='type'></span></td>
+            </tr>
+            <tr>
+                <td><strong>Rarity:</strong></td>
+                <td><span id='rarity'></span></td>
+            </tr>
+            <tr>
+                <td><strong>Price:</strong></td>
+                <td><span id='price'></span> <img src="https://image.fnbr.co/price/icon_vbucks.png" alt="V-Bucks" width="20" height="20"></td>
+            </tr>
+            <tr>
+                <td><strong>First Seen:</strong></td>
+                <td><span id='fseen'></span></td>
+            </tr>
+            <tr>
+                <td><strong>Last Seen:</strong></td>
+                <td><span id='lseen'></span></td>
+            </tr>
+            <tr>
+                <td><strong>Occurrences:</strong></td>
+                <td><span id='occ'></span></td>
+            </tr>
+        </table>
+        <br>
+        <h2>Image's</h2>
+        <div id='imgs'>
+           
+        </div>
+        <div id="countdown-timer">00:00:00</div>
+    </main>
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+
+    <script src="../countdown.js"></script>
+    <script src="script.js"></script>
+</body>

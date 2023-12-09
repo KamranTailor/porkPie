@@ -1,0 +1,12 @@
+#countdown-timer {
+    background-color: #0074d9; /* Change to your desired background color */
+    color: #fff; /* Change to your desired text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 20px;
+    font-size: 17px;
+    cursor: not-allowed;
+    position: fixed;
+    bottom: 50px; /* Adjust the distance from the bottom as needed */
+    right: 20px; /* Adjust the distance from the right as needed */
+}

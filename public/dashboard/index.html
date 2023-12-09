@@ -8,10 +8,27 @@
     <title>Dashboard - Kamran Tailor</title>
     <script> const pageName = 'Dashboard'; </script>
     <link rel="stylesheet" href="../global.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main>
+        <center><h1><span id="greeting"></span></h1>
+        Click on a Button below to get started
+        <div class="dashboard">
+            <div class="item" id="user-settings" onclick="navigateTo('user-settings')">Your Account</div>
+            <div class="item" id="tubeTime" onclick="navigateTo('tube-time')">Tube Time</div>
+            <div class="item" id="codedItems" onclick="navigateTo('coded-items')">Coded Items</div>
+            <div class="item" id="gaming" onclick="navigateTo('gaming')">Gaming</div>
+            <div class="item" id="space" onclick="navigateTo('space')">Space</div>
+            <div class="item" id="aviation" onclick="navigateTo('aviation')">Aviation</div>
+            <div class="item" id="music" onclick="navigateTo('music')">Music</div>
+            <div class="item" id="transport" onclick="navigateTo('transport')">Transport</div>
+            <div class="item" id="admin" onclick="navigateTo('admin')">Admin</div>
+            <div class="item" id="other" onclick="navigateTo('other')">Other</div>
+        </div>
+    </center>
     </main>
     <script src="../global.js"></script>
     <script src="../loginCheck.js"></script>
+    <script src="script.js"></script>
 </body>
