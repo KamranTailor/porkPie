@@ -26,7 +26,6 @@ router.post('/select', async (request, response) => {
         const res = await fetch(tflApiUrl);
 
         // Log the response status
-        console.log('TFL API Response Status:', res.status);
 
         // Check if the response status is okay
         if (res.ok) {
@@ -42,5 +41,13 @@ router.post('/select', async (request, response) => {
         response.status(500).json({ error: 'Internal Server Error' });
     }
 });
+
+router.post('/arrivals', async (request, response) => {
+    const id = request.body.id;
+    const url = `https://api.tfl.gov.uk/StopPoint/${request.body.id}/Arrivals?app_id=${process.env.TFL}`;
+    const tflResponse = await fetch(url);
+    const resData = await tflResponse.json();
+    response.json({ message: true, resData });
+  });
 
 module.exports = router;

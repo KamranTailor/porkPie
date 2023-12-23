@@ -24,7 +24,7 @@ function searchStations() {
         li.textContent = station.name;
         li.onclick = function() {
             const encodedStationName = encodeURIComponent(station.name);
-            window.location = `./times?${station.id}`;
+            window.location = `./station?${station.id}`;
         };
         resultsContainer.appendChild(li);
     });

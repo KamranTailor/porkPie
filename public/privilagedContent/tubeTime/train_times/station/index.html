@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>rain Times - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="lines.css">
+</head>
+<body>
+    <main>
+        <h1><center>🚂 <span id='stationName'>--NAME--</span> 🚂</h1></center>
+        <br>
+        <section>
+            <h2>Arrivals</h2>
+            <table>
+              <thead>
+                <tr>
+                  <th>Destination</th>
+                  <th>Line</th>
+                  <th>Departure Time</th>
+                </tr>
+              </thead>
+              <tbody id="times"></tbody>
+            </table>
+            <button id="showMoreButton" onclick="showMore()">Show More</button>
+            <button id="showLessButton" onclick="showLess()">Show Less</button>
+        </section>
+        <br>
+        <section>
+            <h2>Conections</h2>
+            <div id="con" class="dashboard"></div>
+        </section>
+        
+        
+    </main>
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+    <script src="script.js"></script>
+    <script src="extraInfo.js"></script>
+</body>

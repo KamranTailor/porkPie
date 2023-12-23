@@ -1,0 +1,42 @@
+button {
+    padding: 10px;
+    margin-right: 10px;
+    background-color: #222;
+    margin-top: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: inline-block; /* Set the display property to inline-block */
+  }
+
+  button:hover {
+    background-color: #333;
+  }
+
+  button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+  }
+
+  #showLessButton {
+    display: none;
+  }
+
+  .dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    max-width: 1200px;
+}
+
+.item {
+    height: 100px;
+    text-align: center;
+    line-height: 100px;
+    color: #fff;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
