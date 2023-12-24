@@ -28,3 +28,16 @@ input, select {
     color: #fff;
     box-shadow: none;
 }
+
+button {
+    color: #fff;
+    background-color: #333;
+    box-shadow: none;
+    padding: 10px;
+    border-radius: 10px;
+    border: #323;
+}
+
+#det {
+    font-size: 25px;
+}

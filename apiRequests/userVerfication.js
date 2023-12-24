@@ -1,6 +1,7 @@
 const { configDotenv } = require("dotenv");
 const express = require("express");
 const fs = require('fs').promises;
+const crypto = require('crypto');
 
 const router = express.Router();
 
@@ -18,7 +19,7 @@ async function readUsers() {
 
 router.post('/loginWeb', async (request, response) => {
   try {
-    const password = request.body.password;
+    const inputPassword = request.body.password;
     const inputUsername = request.body.username.toLowerCase(); // Convert input to lowercase
 
     // Read existing users from the file
@@ -30,7 +31,11 @@ router.post('/loginWeb', async (request, response) => {
       console.log("User from data:", user.username);
 
       if (user.username.toLowerCase() === inputUsername) {
-        if (user.password === password) {
+        // Hash the input password with the user's salt
+        const hashedInputPassword = crypto.pbkdf2Sync(inputPassword, user.password.salt, 10000, 64, 'sha512').toString('hex');
+
+        if (hashedInputPassword === user.password.hash) {
+          // Passwords match
           response.json({ message: true, serverID: user.serverID, userID: user.userID });
         } else {
           // Password Incorrect

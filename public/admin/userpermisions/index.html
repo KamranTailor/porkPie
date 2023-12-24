@@ -17,6 +17,8 @@
             <button onclick="viewUsers()">View Users</button>
         </div>
         <br>
+        <div id="users">
+        </div>
 
         <form id="userDataForm">
             <label for="firstName">First Name:</label>
@@ -34,24 +36,22 @@
             <label for="phoneNumber">Phone Number:</label>
             <input type="tel" id="phoneNumber" name="phoneNumber" required><br>
         
-            <label for="password">Password:</label>
-            <input type="password" id="password" name="password" required><br>
         
             <h3>Permissions:</h3>
             <label for="userPermissions">User Permissions:</label>
-            <input type="checkbox" id="userPermissions" name="userPermissions" checked><br>
+            <input type="checkbox" id="userPermissions" name="userPermissions" ><br>
         
             <label for="editClientPins">Edit Client Pins:</label>
-            <input type="checkbox" id="editClientPins" name="editClientPins" checked><br>
+            <input type="checkbox" id="editClientPins" name="editClientPins" ><br>
         
             <label for="updateDependencies">Update Dependencies:</label>
-            <input type="checkbox" id="updateDependencies" name="updateDependencies" checked><br>
+            <input type="checkbox" id="updateDependencies" name="updateDependencies" ><br>
         
             <label for="addNewsStorys">Add News Stories:</label>
-            <input type="checkbox" id="addNewsStorys" name="addNewsStorys" checked><br>
+            <input type="checkbox" id="addNewsStorys" name="addNewsStorys" ><br>
         
             <label for="editUpdates">Edit Updates:</label>
-            <input type="checkbox" id="editUpdates" name="editUpdates" checked><br>
+            <input type="checkbox" id="editUpdates" name="editUpdates" ><br>
         
             <button id="sbButton" type="button" onclick="saveUserData()">Save Data</button>
         </form>
@@ -59,11 +59,20 @@
     <script src="/global.js"></script>
     <script src="/loginCheck.js"></script>
     <script src="script.js"></script>
+    <script src="../gls.js"></script>
 
     <script>
         var addUser = document.getElementById('userDataForm');
+        var users = document.getElementById('users');
         function newUser(){
             addUser.style.display = 'block'; 
+            users.style.display = 'none'; 
+        }
+
+        function viewUsers() {
+            addUser.style.display = 'none'; 
+            users.style.display = 'block'; 
+            fetchAllUsers();
         }
     </script>
 </body>

@@ -44,6 +44,7 @@ app.use('/fn-stats', fnStats);
 const fnGet = require('./apiRequests/fortnite/fn_get.js');
 app.use('/fn-get', fnGet);
 
+  
 let port = 80;
 app.use(express.static("public"));
 app.listen(port, () => console.log(`Listening at port ${port}`));

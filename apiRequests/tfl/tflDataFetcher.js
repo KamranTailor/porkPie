@@ -25,9 +25,16 @@ const compareStatusSeverity = async (newData, oldData) => {
     const oldStatus = oldLine.lineStatuses[0].statusSeverityDescription;
 
     if (newStatus !== oldStatus) {
+      let reason = "";
+      if (newStatus !== "Good Service") {
+        reason = newLine.lineStatuses[0].reason;
+      }
       const messageData = {
-        content: `<@&1188090307934425188> Status change for line ${newLine.name}: ${oldStatus} -> ${newStatus}`,
-      };
+        content: `<@&1188090307934425188>
+        **Status change for the ${newLine.name}** 
+        ${oldStatus} -> ${newStatus} 
+        ${reason}`,
+      }
       try {
         const response = await fetch(webhookUrl, {
           method: 'POST',
