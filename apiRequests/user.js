@@ -3,6 +3,7 @@ const crypto = require('crypto');
 const fs = require('fs');
 const uuid = require('uuid');
 const { configDotenv } = require("dotenv");
+const { sendBasicValidationEmail } = require('../utils/email');
 
 const router = express.Router();
 
@@ -79,6 +80,7 @@ router.post('/addUser', async (request, response) => {
       // Remove the plain password and salt from the response
       delete newUser.password;
 
+      emailUSR(1, newUser);
       modlog(newUser.username, "User Added by an Admin")
       return response.json({ message: true, content: newUser });
   });
@@ -161,46 +163,58 @@ router.post('/delete', async (request, response) => {
 
 router.post('/resetAdm', async (request, response) => {
   try {
-    const userID = request.body.userID;
+    const adminUserID = request.body.userID;
     const serverID = request.body.serverID;
     const users = JSON.parse(fs.readFileSync('data/userData.json', 'utf-8'));
 
-    const user = users.find(user => String(user.userID) === userID && user.serverID === serverID);
+    const adminUser = users.find(user => String(user.userID) === adminUserID && user.serverID === serverID);
 
-    if (user) {
-      if (user.permississions.userPermissions == true) {
+    if (adminUser) {
+      if (adminUser.permississions.userPermissions == true) {
         // Admin fully verified
         // Reset the password of the user requested
-        const userToReset = request.body.usernameDel;
+        const userToResetUsername = request.body.usernameDel;
 
-        // Generate a new password (you may want to use a more secure method to generate passwords)
-        const newPassword = "password123";
+        // Find the user to be reset based on the username only
+        const userToReset = users.find(user => user.username === userToResetUsername);
 
-        // Generate a new salt
-        const newSalt = crypto.randomBytes(16).toString('hex');
+        if (userToReset) {
+          // Generate a new password (you may want to use a more secure method to generate passwords)
+          const newPassword = "password123";
 
-        // Hash the new password with the new salt
-        const hashedNewPassword = crypto.pbkdf2Sync(newPassword, newSalt, 10000, 64, 'sha512').toString('hex');
+          // Generate a new salt
+          const newSalt = crypto.randomBytes(16).toString('hex');
 
-        // Update the user's password and salt
-        user.password.hash = hashedNewPassword;
-        user.password.salt = newSalt;
+          // Hash the new password with the new salt
+          const hashedNewPassword = crypto.pbkdf2Sync(newPassword, newSalt, 10000, 64, 'sha512').toString('hex');
 
-        fs.writeFileSync('data/userData.json', JSON.stringify(users, null, 2));
+          // Update the user's password and salt
+          userToReset.password.hash = hashedNewPassword;
+          userToReset.password.salt = newSalt;
 
-        modlog(userToReset, "Password reset by an Admin")
-        response.json({ success: true, message: 'Password reset successfully', newPassword });
+          fs.writeFileSync('data/userData.json', JSON.stringify(users, null, 2));
+
+          emailUSR(0, userToReset);
+
+          modlog(userToResetUsername, "Password reset by an Admin");
+
+          response.json({ success: true, message: 'Password reset successfully', newPassword });
+        } else {
+          response.json({ success: false, message: 'User to reset not found' });
+        }
       } else {
         response.json({ success: false, message: 'Auth error' });
       }
     } else {
-      response.json({ success: false, message: 'User not found' });
+      response.json({ success: false, message: 'Admin not found' });
     }
   } catch (error) {
     console.error('Error:', error);
     response.status(500).json({ success: false, message: 'An error occurred', error: error.message });
   }
 });
+
+
 
 
 router.post('/editUser', async (request, response) => {
@@ -265,5 +279,51 @@ async function modlog(subject, message) {
   } catch (error) {
     console.error('Error sending message:', error.message);
   }
+}
+
+function emailUSR(type, user) {
+  const toEmail = user.email;
+  let content = "";
+  let subject = "";
+
+  if (type == 0) {
+    subject = 'Password Reset';
+    content = `Dear ${user.first_name} ${user.second_name},
+
+    I am writing to you today to confirm the password reset for your account for all Kamran Industries, and Tailor Tech services. 
+    
+    Your login credentials are as follows:
+    - Username: ${user.username}
+    - Password: password123
+    
+    To access your account and explore our services, please visit kamrantailor.com/login.
+    
+    Should you encounter any challenges, please do not hesitate to contact us. Simply reach out through our contact form, conveniently located at the bottom of our homepage.
+    
+    Kind Regards,
+    
+    Kamran Tailor
+    CEO, Kamran Industries`
+  } else if (type == 1) {
+    subject = 'Account Creation';
+    content = `Dear ${user.first_name} ${user.second_name},
+
+    I am writing to you today to confirm the creation of your account for all Kamran Industries, and Tailor Tech services.
+    
+    Your login credentials are as follows:
+    - Username: ${user.username}
+    - Password: password123
+    
+    To access your account and explore our services, please visit kamrantailor.com/login.
+    
+    Should you encounter any challenges, please do not hesitate to contact us. Simply reach out through our contact form, conveniently located at the bottom of our homepage.
+    
+    Kind Regards,
+    
+    Kamran Tailor
+    CEO, Kamran Industries`
+  }
+
+  sendBasicValidationEmail(toEmail, subject, content);
 }
 module.exports = router;

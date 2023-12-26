@@ -11,7 +11,26 @@
 </head>
 <body>
     <main>
+        <button onclick="onStart()">CLICK IF NOT REDIRECTED</button>
     </main>
+    <script>
+        function onStart() {
+            const code = prompt("Code");
+            
+            if (code === "000") {
+                window.location = "./coffee";
+            } else if (code === "001") {
+                window.location = "./tailorCocktails";
+            } else if (code === "002") {
+                window.location = "./parvati";
+            } else if (code === "003") {
+                window.location = "./cards-f"
+            }
+        }
+
+        onStart()
+    </script>
+
     <script src="/global.js"></script>
     <script src="/loginCheck.js"></script>
 </body>

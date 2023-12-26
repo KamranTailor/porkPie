@@ -4,6 +4,10 @@ require('dotenv').config()
 var fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 const crypto = require('crypto');
+const { sendBasicValidationEmail } = require('./utils/email');
+
+const { getInternalIP, getExternalIP, sendWebhook } = require('./utils/ipUtils');
+let port = 80;
 
 const app = express();
 app.use(express.json());
@@ -44,7 +48,8 @@ app.use('/fn-stats', fnStats);
 const fnGet = require('./apiRequests/fortnite/fn_get.js');
 app.use('/fn-get', fnGet);
 
-  
-let port = 80;
+// IP Adress usage
+sendWebhook(port);
+
 app.use(express.static("public"));
 app.listen(port, () => console.log(`Listening at port ${port}`));
