@@ -7,17 +7,12 @@ const crypto = require('crypto');
 const { sendBasicValidationEmail } = require('./utils/email');
 
 const { getInternalIP, getExternalIP, sendWebhook } = require('./utils/ipUtils');
-let port = 80;
+require('./download/TFL/main.js');
+require('./download/crypto/main.js');
 
+let port = 80;
 const app = express();
 app.use(express.json());
-
-//TFL Status
-const fetchDataAndSave = require('./apiRequests/tfl/tflDataFetcher.js');
-const intervalInMs = 60000; // 1 minute
-// Run the function immediately and then at the specified interval
-fetchDataAndSave();
-setInterval(fetchDataAndSave, intervalInMs);
 
 //Meta Requests
 const pageinit = require('./apiRequests/pageinit.js');
@@ -39,8 +34,14 @@ app.use('/secureCheck', sc);
 const tflStopPoint = require('./apiRequests/tfl/stopPoint.js');
 app.use('/tflStopPoint', tflStopPoint);
 
+const tflStopPointLCO = require('./apiRequests/tfl/line.js');
+app.use('/tflStopPointLCO', tflStopPointLCO);
+
 const tflStatus= require('./apiRequests/tfl/status.js');
 app.use('/TFLstatus', tflStatus);
+
+const nala = require('./apiRequests/nala/exe.js');
+app.use('/nala', nala);
 
 //FN Routes
 const fnStats = require('./apiRequests/fortnite/stats.js');

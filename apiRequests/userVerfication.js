@@ -2,6 +2,7 @@ const { configDotenv } = require("dotenv");
 const express = require("express");
 const fs = require('fs').promises;
 const crypto = require('crypto');
+const fetch = require('node-fetch');
 
 const router = express.Router();
 
@@ -53,6 +54,35 @@ router.post('/loginWeb', async (request, response) => {
   }
 });
 
+
+router.post('/loginApp', async (request, response) => {
+  try {
+    const inputUsername = (request.body.username || '').toLowerCase();
+    const inputPassword = request.body.password;
+
+    const users = await readUsers();
+
+    const user = Object.values(users).find(u => u.username.toLowerCase() === inputUsername);
+
+    if (user) {
+      const hashedInputPassword = crypto.pbkdf2Sync(inputPassword, user.password.salt, 10000, 64, 'sha512').toString('hex');
+
+      if (hashedInputPassword === user.password.hash) {
+        // Passwords match
+        response.json({ success: true, userID: user.userID });
+      } else {
+        // Password incorrect
+        response.json({ success: false, error: "Incorrect Password" });
+      }
+    } else {
+      // User not found
+      response.json({ success: false, error: "Incorrect Username" });
+    }
+  } catch (error) {
+    console.error(error);
+    response.status(500).json({ success: false, error: "Internal Server Error" });
+  }
+});
 
 
 module.exports = router;

@@ -2,6 +2,7 @@ const express = require("express");
 const fs = require('fs');
 const { v4: uuidv4 } = require('uuid');
 require('dotenv').config()
+const fetch = require('node-fetch');
 
 const router = express.Router();
 exports.router = router;

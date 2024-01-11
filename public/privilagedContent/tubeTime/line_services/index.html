@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Line Services - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <center>
+            <h1>Select a Line</h1>
+        </center>
+        <div class="dashboard">
+            <div id='Bakerloo' class='item' onclick="navigateTo('bakerloo')">Bakerloo</div>
+            <div id='Central' class='item' onclick="navigateTo('central')">Central</div>
+            <div id='Circle' class='item' onclick="navigateTo('circle')">Circle</div>
+            <div id='District' class='item' onclick="navigateTo('district')">District</div>
+            <div id='HammersmithAndCity' class='item' onclick="navigateTo('hammersmith_and_city')">Hammersmith & City</div>
+            <div id='Jubilee' class='item' onclick="navigateTo('jubilee')">Jubilee</div>
+            <div id='Metropolitan' class='item' onclick="navigateTo('metropolitan')">Metropolitan</div>
+            <div id='Northern' class='item' onclick="navigateTo('northern')">Northern</div>
+            <div id='Piccadilly' class='item' onclick="navigateTo('piccadilly')">Piccadilly</div>
+            <div id='Victoria' class='item' onclick="navigateTo('victoria')">Victoria</div>
+            <div id='WaterlooAndCity' class='item' onclick="navigateTo('waterloo_and_city')">Waterloo & City</div>
+        </div>
+    </main>
+    <script>
+        function navigateTo(server) {
+            window.location.href = `line?${server.toLowerCase()}`;
+        }
+    </script> 
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+</body>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSV Map Display</title>
+  <!-- Include Leaflet CSS and JavaScript -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+<body>
+
+<!-- Your map container -->
+<div id="map" style="height: 500px;"></div>
+
+<!-- File input for CSV file -->
+<input type="file" accept=".csv" id="csvFileInput" />
+
+<!-- Script to handle CSV file upload and map display -->
+<script>
+  document.getElementById('csvFileInput').addEventListener('change', handleFileSelect);
+
+  function handleFileSelect(event) {
+    const file = event.target.files[0];
+
+    if (file) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        const csvData = e.target.result;
+        displayMap(parseCSV(csvData));
+      };
+
+      reader.readAsText(file);
+    }
+  }
+
+  function parseCSV(csvData) {
+    const lines = csvData.split('\n');
+    const headers = lines[0].split('\t');
+    const data = [];
+
+    for (let i = 1; i < lines.length; i++) {
+        const values = lines[i].split('\t');
+        const entry = {};
+
+        if (values.length === headers.length) {
+        for (let j = 0; j < headers.length; j++) {
+            entry[headers[j]] = values[j];
+        }
+
+        // Check if 'Position' property is present and has valid coordinates
+        if (entry['Position'] && entry['Position'].match(/^-?\d+(\.\d+)?,-?\d+(\.\d+)?$/)) {
+            data.push(entry);
+        } else {
+            console.error(`Invalid 'Position' data at line ${i + 1}: ${entry['Position']}`);
+        }
+        } else {
+        console.error(`Invalid data at line ${i + 1}: ${lines[i]}`);
+        }
+    }
+
+    return data;
+    }
+
+  function displayMap(data) {
+    const map = L.map('map').setView([0, 0], 2);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+    data.forEach(entry => {
+        const position = entry['Position'].split(',').map(parseFloat);
+
+        // Check if altitude, speed, and direction are defined
+        const altitude = entry['Altitude'] || 'N/A';
+        const speed = entry['Speed'] || 'N/A';
+        const direction = entry['Direction'] || 'N/A';
+
+        L.marker(position)
+        .addTo(map)
+        .bindPopup(
+            `<b>Callsign:</b> ${entry['Callsign']}<br>
+            <b>Altitude:</b> ${altitude}<br>
+            <b>Speed:</b> ${speed}<br>
+            <b>Direction:</b> ${direction}`
+        );
+    });
+    }
+</script>
+
+</body>
+</html>

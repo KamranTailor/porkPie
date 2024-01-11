@@ -1,4 +1,5 @@
 // utils/email.js
+const fetch = require('node-fetch');
 
 const nodemailer = require('nodemailer');
 const email = "kamran_tailor@hotmail.com";
@@ -53,8 +54,6 @@ async function sendBasicValidationEmail(toEmail, subject, content) {
     } catch (error) {
         console.error('Error sending message:', error.message);
     }
-
-    console.log('Email sent: ', info.messageId);
   } catch (error) {
     console.error('Error sending email:', error.message);
   }

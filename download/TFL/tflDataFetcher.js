@@ -77,6 +77,7 @@ const fetchDataAndSave = async (tflKey) => {
       overgroundDta: overgroundDta
     };
 
+    console.log("Data Saved to",DATA_FILE_PATH )
     await fs.writeFile(DATA_FILE_PATH, JSON.stringify(result, null, 2));
   } catch (error) {
     console.error('Error fetching or saving data:', error);

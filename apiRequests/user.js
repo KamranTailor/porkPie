@@ -4,6 +4,7 @@ const fs = require('fs');
 const uuid = require('uuid');
 const { configDotenv } = require("dotenv");
 const { sendBasicValidationEmail } = require('../utils/email');
+const fetch = require('node-fetch');
 
 const router = express.Router();
 

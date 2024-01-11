@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<head>
+    <!--Meta Data-->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width">
+
+    <!--User Head Data-->
+    <title>Nala - Kamran Tailor</title>
+    <script> const pageName = 'Dashboard'; </script>
+    <link rel="stylesheet" href="/global.css">
+    <style>
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+            max-width: 1200px;
+        }
+
+        .item {
+            height: 150px;
+            text-align: center;
+            line-height: 150px;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .item:hover {
+            background-color: #2980b9;
+        }
+
+        #exe {
+            background-color: #3498db;
+            font-size: 15px;
+        }
+
+        #ph {
+            background-color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <div class="dashboard">
+            <div class="item" id="exe" onclick="navigateTo('Lavatorial-Feedback')">Lavatorial Feedback</div>
+            <div class="item" id="ph" onclick="navigateTo('Photos')">Photos</div>
+        </div>
+    </main>
+    <script>
+        function navigateTo(section) {
+        var contentDiv = document.getElementById('content');
+        switch (section) {
+            case 'Lavatorial-Feedback':
+                window.location = './lavatorial-Feedback';
+                break;
+            case 'Photos':
+                window.location = './photos';
+                break;
+            default:
+                contentDiv.innerHTML = '<p>Please select an item from the dashboard.</p>';
+        }
+}
+    </script>
+
+    <script src="/global.js"></script>
+    <script src="/loginCheck.js"></script>
+</body>

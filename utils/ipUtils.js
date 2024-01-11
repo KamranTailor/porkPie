@@ -1,5 +1,5 @@
 // ipUtils.js
-
+const fetch = require('node-fetch');
 const os = require('os');
 const request = require('request');
 
